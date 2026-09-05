@@ -1,6 +1,6 @@
 <view class="forum-page motion-page">
   <view class="forum-header motion-card">
-    <view><view class="forum-eyebrow">WENHUA MOMENTS</view><view class="forum-title">文华校园圈</view><view class="forum-subtitle">同学之间，分享与互助</view></view>
+    <view><view class="forum-eyebrow">CAMPUS MOMENTS</view><view class="forum-title">校园圈</view><view class="forum-subtitle">同学之间，分享与互助</view></view>
     <view class="header-actions">
       <view class="message-button pressable" bindtap="openNotifications">消息<text wx:if="{{unreadCount > 0}}">{{unreadCount > 99 ? '99+' : unreadCount}}</text></view>
       <view class="publish-post pressable" bindtap="openPublishPost">＋ 发帖子</view>

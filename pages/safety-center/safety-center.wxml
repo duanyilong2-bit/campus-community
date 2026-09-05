@@ -2,7 +2,7 @@
   <view class="hero"><view><view class="title">账号与安全中心</view><view class="copy">认证、提醒、客服反馈和争议记录</view></view><view class="account {{accountStatus}}">{{accountStatus === 'ACTIVE' ? '账号正常' : '账号已暂停'}}</view></view>
 
   <view class="card">
-    <view class="card-head"><view><view class="card-title">文华学院校园认证</view><view class="card-copy">仅提交学号后4到8位和校园凭证供管理员审核</view></view><view class="status status-{{verificationStatus}}">{{verificationText}}</view></view>
+    <view class="card-head"><view><view class="card-title">校园认证</view><view class="card-copy">仅提交学号后4到8位和校园凭证供管理员审核</view></view><view class="status status-{{verificationStatus}}">{{verificationText}}</view></view>
     <block wx:if="{{verificationStatus !== 'PENDING' && verificationStatus !== 'VERIFIED'}}">
       <input class="input" maxlength="8" placeholder="请输入学号后4到8位" value="{{studentNoLast4}}" bindinput="onStudentCodeInput" />
       <view class="proof" bindtap="chooseProof"><image wx:if="{{proofTempPath}}" src="{{proofTempPath}}" mode="aspectFill" /><view wx:else>＋ 上传校园卡或学生证局部照片</view></view>
@@ -10,7 +10,7 @@
       <button class="primary" loading="{{isSubmitting}}" disabled="{{isSubmitting}}" bindtap="submitVerification">提交认证审核</button>
     </block>
     <view class="result-tip" wx:elif="{{verificationStatus === 'PENDING'}}">认证资料已提交，请等待管理员审核。</view>
-    <view class="result-tip verified" wx:else>已通过文华学院校园认证。</view>
+    <view class="result-tip verified" wx:else>已通过校园认证。</view>
   </view>
 
   <view class="card notification-card">

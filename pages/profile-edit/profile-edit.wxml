@@ -14,7 +14,7 @@
     <input class="nickname-input" maxlength="16" placeholder="请输入2到16个字" value="{{nickname}}" bindinput="onNicknameInput" />
     <view class="text-count">{{nickname.length}} / 16</view>
 
-    <view class="school-row"><text>所属学校</text><view>文华学院 · 已固定</view></view>
+    <view class="school-row"><text>所属范围</text><view>校园社区 · 已设置</view></view>
   </view>
 
   <view class="privacy-tip">不会显示你的 OPENID、手机号等敏感信息。请勿使用包含联系方式或冒充他人的昵称。</view>

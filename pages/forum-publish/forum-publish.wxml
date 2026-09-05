@@ -1,6 +1,6 @@
 <view class="page-container forum-publish-page">
   <view class="publish-heading">
-    <view class="publish-kicker">文华校园圈</view>
+    <view class="publish-kicker">校园圈</view>
     <view class="page-title">分享校园新鲜事</view>
     <view class="page-description">友善交流，不发布隐私、广告或不实信息</view>
   </view>
@@ -40,7 +40,7 @@
     <view class="image-tip">图片发布前会经过安全检查，单张不超过 1MB</view>
   </view>
 
-  <view class="safety-notice"><text>i</text><view>帖子将公开显示给文华学院校园社区体验用户，请勿填写手机号、宿舍号等敏感信息。</view></view>
+  <view class="safety-notice"><text>i</text><view>帖子将公开显示给校园社区用户，请勿填写手机号、宿舍号等敏感信息。</view></view>
 
   <button class="primary-button" loading="{{isSubmitting}}" disabled="{{isSubmitting}}" bindtap="publishPost">{{isSubmitting ? '正在发布…' : '发布到校园圈'}}</button>
 </view>

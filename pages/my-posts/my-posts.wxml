@@ -1,6 +1,6 @@
 <view class="page-container my-posts-page">
   <view class="page-head">
-    <view><view class="page-title">我的帖子</view><view class="page-description">查看和管理我在文华校园圈发布的内容</view></view>
+    <view><view class="page-title">我的帖子</view><view class="page-description">查看和管理我在校园圈发布的内容</view></view>
     <view class="publish-button" bindtap="openPublish">＋ 发帖</view>
   </view>
 

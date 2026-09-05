@@ -21,14 +21,14 @@ function formatTask(task, dataSource) {
 function formatPost(post) {
   return {
     ...post,
-    avatarText: String(post.authorName || '文华同学').slice(0, 1),
+    avatarText: String(post.authorName || '校园同学').slice(0, 1),
     imageCount: Array.isArray(post.postImages) ? post.postImages.length : 0
   }
 }
 
 Page({
   data: {
-    schoolName: '文华学院',
+    schoolName: '校园社区',
     keyword: '',
     isSearching: false,
     quickServices: [
@@ -84,7 +84,7 @@ Page({
     const result = response && response.result ? response.result : {}
     if (result.success && Array.isArray(result.tasks)) {
       this.allTasks = result.tasks.map((task) => formatTask(task, 'cloud'))
-      this.setData({ taskSourceText: '来自文华学院校园互助' })
+      this.setData({ taskSourceText: '来自校园互助' })
       return
     }
 
@@ -104,7 +104,7 @@ Page({
     const result = response && response.result ? response.result : {}
     if (result.success && Array.isArray(result.posts)) {
       this.allPosts = result.posts.map(formatPost)
-      this.setData({ postSourceText: '来自文华学院校园圈' })
+      this.setData({ postSourceText: '来自校园圈' })
       return
     }
 

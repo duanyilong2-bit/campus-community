@@ -313,7 +313,7 @@ function getDisplayName(user, userId) {
   if (nickname && nickname !== '校园帮用户' && nickname !== '校园社区用户') {
     return nickname
   }
-  return `文华同学${userId.slice(-4).toUpperCase()}`
+  return `校园同学${userId.slice(-4).toUpperCase()}`
 }
 
 async function isActionTooFast(collectionName, userId, minimumInterval) {
@@ -883,7 +883,7 @@ async function listNotifications(userId) {
       taskId: item.taskId || '',
       orderId: item.orderId || '',
       taskTitle: item.taskTitle || '',
-      actorName: item.actorName || '文华同学',
+      actorName: item.actorName || '校园同学',
       actorAvatarUrl: item.actorAvatarUrl || '',
       contentPreview: item.contentPreview || '',
       postPreview: item.postPreview || '',

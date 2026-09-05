@@ -27,7 +27,7 @@ Page({
     isLoading: false,
     isLoadingMore: false,
     processingPostId: '',
-    dataSourceText: '正在读取文华校园圈…'
+    dataSourceText: '正在读取校园圈…'
   },
 
   onShow() {
@@ -88,7 +88,7 @@ Page({
         page,
         total: Number(result.total || 0),
         hasMore: Boolean(result.hasMore),
-        dataSourceText: '内容来自文华学院 CloudBase 校园圈'
+        dataSourceText: '内容来自 CloudBase 校园圈'
       })
     } catch (error) {
       console.error('读取校园圈失败：', error)

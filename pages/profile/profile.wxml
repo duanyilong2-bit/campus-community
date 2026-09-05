@@ -70,5 +70,5 @@
     <view class="info-row" bindtap="openSafetyCenter"><text>账号与数据安全</text><text class="row-arrow">›</text></view>
   </view>
 
-  <view class="version-text">校园社区 · 文华学院测试版</view>
+  <view class="version-text">校园社区 · 测试版</view>
 </view>

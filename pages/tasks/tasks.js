@@ -81,7 +81,7 @@ Page({
 
       if (cloudTasks.length > 0 || Number(result.total || 0) === 0) {
         this.allTasks = loadMore ? (this.allTasks || []).concat(cloudTasks) : cloudTasks
-        this.setData({ tasks: this.allTasks, page, total: Number(result.total || 0), hasMore: Boolean(result.hasMore), dataSourceText: '文华学院 CloudBase 云端任务' })
+        this.setData({ tasks: this.allTasks, page, total: Number(result.total || 0), hasMore: Boolean(result.hasMore), dataSourceText: 'CloudBase 云端任务' })
         return
       }
 

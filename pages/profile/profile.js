@@ -3,7 +3,7 @@ Page({
     nickname: '校园社区用户',
     avatarUrl: '',
     identityText: '正在同步云端身份',
-    schoolName: '文华学院',
+    schoolName: '校园社区',
     stats: {
       published: 0,
       accepted: 0,
@@ -171,7 +171,7 @@ Page({
   showAbout() {
     wx.showModal({
       title: '关于校园社区',
-      content: '校园社区是面向文华学院的校园生活、互动交流与同学互助小程序，目前处于 CloudBase 测试阶段。',
+      content: '校园社区是面向校园生活、互动交流与同学互助的小程序，目前处于 CloudBase 测试阶段。',
       showCancel: false,
       confirmText: '知道了'
     })

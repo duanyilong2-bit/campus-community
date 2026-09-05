@@ -11,7 +11,7 @@
 
   <view class="section-title">校园互动</view>
   <view class="feature-grid">
-    <view class="feature" bindtap="openForum"><view class="icon cyan">圈</view><view><view class="name">文华校园圈</view><view class="copy">发帖、点赞和评论互动</view></view><text>›</text></view>
+    <view class="feature" bindtap="openForum"><view class="icon cyan">圈</view><view><view class="name">校园圈</view><view class="copy">发帖、点赞和评论互动</view></view><text>›</text></view>
     <view class="feature" bindtap="openLegal"><view class="icon gray">规</view><view><view class="name">协议与社区规范</view><view class="copy">查看隐私和安全说明</view></view><text>›</text></view>
   </view>
 

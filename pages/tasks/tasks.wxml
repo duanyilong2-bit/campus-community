@@ -2,8 +2,8 @@
   <view class="hall-banner">
     <view class="banner-circle circle-one"></view>
     <view class="banner-circle circle-two"></view>
-    <view class="banner-kicker">WENHUA CAMPUS</view>
-    <view class="banner-title">文华学院校园互助</view>
+    <view class="banner-kicker">CAMPUS COMMUNITY</view>
+    <view class="banner-title">校园互助</view>
     <view class="banner-subtitle">跑腿、代办、打印与兼职任务都在这里</view>
   </view>
 
@@ -42,7 +42,7 @@
 
   <view class="task-card" wx:for="{{tasks}}" wx:key="id" data-id="{{item.id}}" data-source="{{item.dataSource}}" bindtap="openTaskDetail">
     <view class="task-card-head">
-      <view class="location-tag">{{item.location || '文华学院'}}</view>
+      <view class="location-tag">{{item.location || '校园'}}</view>
       <view class="anonymous-label" wx:if="{{item.isAnonymous}}">匿名用户</view>
       <view class="identity-badge" wx:if="{{!item.isPublisherVerified}}"><text>!</text>未认证</view>
       <text class="deadline">截止 {{item.deadline}}</text>

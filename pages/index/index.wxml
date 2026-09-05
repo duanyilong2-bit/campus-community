@@ -4,11 +4,11 @@
     <view class="hero-shape hero-shape-two"></view>
     <view class="hero-grid"></view>
     <view class="hero-topline">
-      <view class="school-pill">文华学院专属</view>
+      <view class="school-pill">校园社区</view>
       <view class="online-pill"><text></text>云端在线</view>
     </view>
     <view class="hero-brand-row">
-      <view><view class="hero-eyebrow">WENHUA CAMPUS</view><view class="hero-title">文华校园社区</view></view>
+      <view><view class="hero-eyebrow">CAMPUS COMMUNITY</view><view class="hero-title">校园社区</view></view>
     </view>
     <view class="hero-subtitle">分享校园生活，寻找同学互助，发现身边的新鲜事</view>
     <view class="hero-keywords">
@@ -49,7 +49,7 @@
   <view class="community-entry motion-card" wx:if="{{!isSearching}}">
     <view class="entry-main pressable" bindtap="goForum">
       <view class="entry-icon">圈</view>
-      <view class="entry-copy"><view>逛逛文华校园圈</view><text>看看同学们正在分享什么</text></view>
+      <view class="entry-copy"><view>逛逛校园圈</view><text>看看同学们正在分享什么</text></view>
       <text class="entry-arrow">›</text>
     </view>
     <view class="entry-publish pressable" bindtap="openPublishMenu">＋ 发布</view>
