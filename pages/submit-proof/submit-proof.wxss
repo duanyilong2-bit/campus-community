@@ -1,0 +1,115 @@
+.submit-header {
+  padding: 14rpx 4rpx 0;
+}
+
+.submit-kicker {
+  margin-bottom: 12rpx;
+  color: #2563eb;
+  font-size: 23rpx;
+  font-weight: 700;
+}
+
+.proof-card {
+  padding: 30rpx;
+}
+
+.field-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.field-label {
+  color: #344056;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.field-optional {
+  color: #98a2b3;
+  font-size: 22rpx;
+}
+
+.proof-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 230rpx;
+  padding: 22rpx;
+  background: #f7f9fc;
+  border: 1rpx solid #e8edf4;
+  border-radius: 20rpx;
+}
+
+.text-count {
+  margin-top: 12rpx;
+  color: #a3abba;
+  font-size: 21rpx;
+  text-align: right;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8rpx;
+}
+
+.image-item,
+.add-image {
+  position: relative;
+  box-sizing: border-box;
+  width: 188rpx;
+  height: 188rpx;
+  margin: 8rpx;
+  border-radius: 20rpx;
+}
+
+.image-item {
+  overflow: visible;
+}
+
+.proof-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.remove-image {
+  position: absolute;
+  top: -14rpx;
+  right: -14rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42rpx;
+  height: 42rpx;
+  background: #172033;
+  color: #ffffff;
+  font-size: 30rpx;
+  border: 4rpx solid #ffffff;
+  border-radius: 50%;
+}
+
+.add-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f7f9fc;
+  color: #8a94a6;
+  font-size: 22rpx;
+  border: 2rpx dashed #d8e0eb;
+}
+
+.add-icon {
+  margin-bottom: 8rpx;
+  color: #2563eb;
+  font-size: 48rpx;
+  font-weight: 300;
+}
+
+.image-tip {
+  margin-top: 16rpx;
+  color: #a3abba;
+  font-size: 21rpx;
+}

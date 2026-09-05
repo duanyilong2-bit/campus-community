@@ -1,0 +1,7 @@
+{
+  "name": "safety-api",
+  "version": "1.0.0",
+  "description": "校园社区认证、反馈、争议和账号安全接口",
+  "main": "index.js",
+  "dependencies": { "wx-server-sdk": "3.0.1" }
+}

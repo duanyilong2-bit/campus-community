@@ -1,0 +1,23 @@
+<view class="page-container edit-page">
+  <view class="page-title">编辑个人资料</view>
+  <view class="page-description">设置后，校园圈的帖子和评论会显示你的新资料</view>
+
+  <view class="card profile-card">
+    <view class="avatar-area" bindtap="chooseAvatar">
+      <image class="edit-avatar" wx:if="{{avatarTempPath || avatarUrl}}" src="{{avatarTempPath || avatarUrl}}" mode="aspectFill" />
+      <view class="edit-avatar avatar-placeholder" wx:else>文</view>
+      <view class="camera-badge">相机</view>
+    </view>
+    <view class="avatar-tip">点击头像，从相册选择或拍照</view>
+
+    <view class="field-label">校园昵称</view>
+    <input class="nickname-input" maxlength="16" placeholder="请输入2到16个字" value="{{nickname}}" bindinput="onNicknameInput" />
+    <view class="text-count">{{nickname.length}} / 16</view>
+
+    <view class="school-row"><text>所属学校</text><view>文华学院 · 已固定</view></view>
+  </view>
+
+  <view class="privacy-tip">不会显示你的 OPENID、手机号等敏感信息。请勿使用包含联系方式或冒充他人的昵称。</view>
+
+  <button class="primary-button" loading="{{isSaving}}" disabled="{{isSaving || isLoading}}" bindtap="saveProfile">{{isSaving ? '正在保存…' : '保存个人资料'}}</button>
+</view>

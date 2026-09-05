@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="hero"><view><view class="title">账号与安全中心</view><view class="copy">认证、提醒、客服反馈和争议记录</view></view><view class="account {{accountStatus}}">{{accountStatus === 'ACTIVE' ? '账号正常' : '账号已暂停'}}</view></view>
+
+  <view class="card">
+    <view class="card-head"><view><view class="card-title">文华学院校园认证</view><view class="card-copy">仅提交学号后4到8位和校园凭证供管理员审核</view></view><view class="status status-{{verificationStatus}}">{{verificationText}}</view></view>
+    <block wx:if="{{verificationStatus !== 'PENDING' && verificationStatus !== 'VERIFIED'}}">
+      <input class="input" maxlength="8" placeholder="请输入学号后4到8位" value="{{studentNoLast4}}" bindinput="onStudentCodeInput" />
+      <view class="proof" bindtap="chooseProof"><image wx:if="{{proofTempPath}}" src="{{proofTempPath}}" mode="aspectFill" /><view wx:else>＋ 上传校园卡或学生证局部照片</view></view>
+      <view class="privacy">请遮挡姓名、完整学号、身份证号等无关信息。</view>
+      <button class="primary" loading="{{isSubmitting}}" disabled="{{isSubmitting}}" bindtap="submitVerification">提交认证审核</button>
+    </block>
+    <view class="result-tip" wx:elif="{{verificationStatus === 'PENDING'}}">认证资料已提交，请等待管理员审核。</view>
+    <view class="result-tip verified" wx:else>已通过文华学院校园认证。</view>
+  </view>
+
+  <view class="card notification-card">
+    <view class="card-head">
+      <view>
+        <view class="card-title">微信服务通知</view>
+        <view class="card-copy">接单、提交完成和确认完成时，在微信服务通知中提醒</view>
+      </view>
+      <view class="notice-status {{subscriptionEnabled ? 'ready' : ''}}">{{subscriptionEnabled ? '已授权 1 次' : '未授权'}}</view>
+    </view>
+    <view class="privacy">这是微信一次性提醒。站内消息始终保留，提醒使用后可再次授权。</view>
+    <button class="subscription-renew" bindtap="requestTaskSubscription">{{subscriptionEnabled ? '再授权一次任务提醒' : '开启一次任务提醒'}}</button>
+  </view>
+
+  <view class="card">
+    <view class="card-title">问题反馈与客服</view>
+    <picker mode="selector" range="{{feedbackCategories}}" value="{{feedbackCategoryIndex}}" bindchange="onFeedbackCategoryChange"><view class="input picker">{{feedbackCategories[feedbackCategoryIndex]}} ›</view></picker>
+    <textarea class="textarea" maxlength="500" placeholder="请说明遇到的问题或建议" value="{{feedbackContent}}" bindinput="onFeedbackInput" />
+    <button class="primary" loading="{{isSubmitting}}" disabled="{{isSubmitting}}" bindtap="submitFeedback">提交反馈</button>
+    <button class="contact" open-type="contact">联系微信客服</button>
+  </view>
+
+  <view class="card" wx:if="{{disputes.length}}"><view class="card-title">我的争议处理</view><view class="record" wx:for="{{disputes}}" wx:key="id"><view><text>{{item.title}}</text><text class="record-status">{{item.status === 'OPEN' ? '处理中' : '已处理'}}</text></view><view>{{item.reason}} · {{item.createdAt}}</view><view wx:if="{{item.resultText}}">处理结果：{{item.resultText}}</view></view></view>
+  <view class="legal" bindtap="openLegal">查看隐私说明与社区规范 ›</view>
+</view>

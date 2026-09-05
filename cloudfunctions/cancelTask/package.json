@@ -1,0 +1,9 @@
+{
+  "name": "cancel-task",
+  "version": "1.0.0",
+  "description": "发布者安全取消待接单任务",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "image-security",
+  "version": "1.0.0",
+  "description": "校园社区图片内容安全检查",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}

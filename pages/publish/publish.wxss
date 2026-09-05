@@ -1,0 +1,168 @@
+.publish-header {
+  padding: 14rpx 4rpx 0;
+}
+
+.publish-kicker {
+  margin-bottom: 12rpx;
+  color: #2563eb;
+  font-size: 23rpx;
+  font-weight: 700;
+}
+
+.local-notice {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+  padding: 18rpx 22rpx;
+  background: #eff6ff;
+  color: #52709f;
+  font-size: 23rpx;
+  border-radius: 20rpx;
+}
+
+.notice-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 12rpx;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 21rpx;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.form-card {
+  padding: 34rpx 30rpx;
+}
+
+.form-item {
+  margin-bottom: 34rpx;
+}
+
+.form-item:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 14rpx;
+  color: #344056;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.required {
+  color: #f97316;
+}
+
+.form-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 88rpx;
+  padding: 0 24rpx;
+  background: #f7f9fc;
+  border: 1rpx solid #e8edf4;
+  border-radius: 18rpx;
+}
+
+.form-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 200rpx;
+  padding: 24rpx;
+  background: #f7f9fc;
+  border: 1rpx solid #e8edf4;
+  border-radius: 18rpx;
+}
+
+.picker-value {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88rpx;
+  padding: 0 24rpx;
+  background: #f7f9fc;
+  border: 1rpx solid #e8edf4;
+  border-radius: 18rpx;
+}
+
+.placeholder {
+  color: #9ca3af;
+}
+
+.picker-arrow {
+  color: #98a2b3;
+  font-size: 26rpx;
+}
+
+.deadline-picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+}
+
+.deadline-picker {
+  min-width: 0;
+}
+
+.deadline-picker-value {
+  height: 112rpx;
+  padding: 0 20rpx;
+}
+
+.deadline-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8rpx;
+  color: #344056;
+  font-size: 25rpx;
+}
+
+.deadline-value-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.deadline-caption {
+  color: #8a94a6;
+  font-size: 20rpx;
+}
+
+.placeholder .deadline-copy {
+  color: #9ca3af;
+}
+
+.deadline-hint {
+  margin-top: 12rpx;
+  color: #98a2b3;
+  font-size: 21rpx;
+}
+
+.privacy-option { display: flex; align-items: center; justify-content: space-between; margin-top: 28rpx; padding: 24rpx; background: #f7faff; border: 1rpx solid #e5edfb; border-radius: 22rpx; }
+.privacy-copy { flex: 1; min-width: 0; }
+.privacy-title { color: #263652; font-size: 28rpx; font-weight: 700; }
+.privacy-icon { display: inline-flex; align-items: center; justify-content: center; width: 40rpx; height: 40rpx; margin-right: 12rpx; color: #2563eb; background: #e4efff; font-size: 21rpx; border-radius: 12rpx; }
+.privacy-description { margin-top: 8rpx; color: #8a94a6; font-size: 22rpx; }
+
+.input-with-suffix {
+  position: relative;
+}
+
+.reward-input {
+  padding-right: 76rpx;
+}
+
+.input-suffix {
+  position: absolute;
+  top: 25rpx;
+  right: 26rpx;
+  color: #667085;
+  font-size: 25rpx;
+}

@@ -1,0 +1,11 @@
+page { background: #f4f7fb; }
+.legal-page { padding: 28rpx 28rpx 70rpx; }
+.hero { padding: 34rpx; background: linear-gradient(135deg,#2563eb,#59a7ff); color: #fff; border-radius: 30rpx; }
+.hero-title { font-size: 40rpx; font-weight: 900; }
+.hero-copy { margin-top: 10rpx; font-size: 23rpx; opacity: .82; }
+.section { margin-top: 22rpx; padding: 28rpx; background: #fff; border: 1rpx solid #edf1f7; border-radius: 25rpx; }
+.title { margin-bottom: 18rpx; color: #1d293d; font-size: 30rpx; font-weight: 900; }
+.paragraph,.rule { margin-top: 12rpx; color: #667085; font-size: 25rpx; line-height: 1.8; }
+.accept-button { margin-top: 28rpx; height: 90rpx; background: #2563eb; color: #fff; font-size: 28rpx; font-weight: 800; line-height: 90rpx; border-radius: 23rpx; }
+.accept-button::after { border: none; }
+.accept-button.accepted { background: #eaf8f1; color: #159667; }

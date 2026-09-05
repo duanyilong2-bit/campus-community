@@ -1,0 +1,65 @@
+<view class="page-container">
+  <view class="submit-header">
+    <view class="submit-kicker">完成凭证</view>
+    <view class="page-title">说明你完成了什么</view>
+    <view class="page-description">文字和图片至少填写一种，发布者确认后任务才会完成</view>
+  </view>
+
+  <view class="card proof-card">
+    <view class="field-header">
+      <text class="field-label">文字说明</text>
+      <text class="field-optional">选填 · 最多500字</text>
+    </view>
+    <textarea
+      class="proof-textarea"
+      maxlength="500"
+      placeholder="例如：快递已取回，放在宿舍门口，请查收。"
+      value="{{proofText}}"
+      bindinput="onProofInput"
+    />
+    <view class="text-count">{{proofText.length}} / 500</view>
+  </view>
+
+  <view class="card proof-card">
+    <view class="field-header">
+      <text class="field-label">图片凭证</text>
+      <text class="field-optional">选填 · 最多{{maxImages}}张</text>
+    </view>
+
+    <view class="image-grid">
+      <view
+        class="image-item"
+        wx:for="{{images}}"
+        wx:key="tempFilePath"
+        data-index="{{index}}"
+        bindtap="previewImage"
+      >
+        <image class="proof-image" src="{{item.tempFilePath}}" mode="aspectFill" />
+        <view
+          class="remove-image"
+          data-index="{{index}}"
+          catchtap="removeImage"
+        >×</view>
+      </view>
+
+      <view
+        class="add-image"
+        wx:if="{{images.length !== maxImages}}"
+        bindtap="addImages"
+      >
+        <text class="add-icon">＋</text>
+        <text>添加图片</text>
+      </view>
+    </view>
+    <view class="image-tip">图片提交前会经过安全检查，单张不超过 1MB</view>
+  </view>
+
+  <button
+    class="primary-button"
+    loading="{{isSubmitting}}"
+    disabled="{{isSubmitting}}"
+    bindtap="submitProof"
+  >
+    {{isSubmitting ? '正在上传并提交…' : '提交给发布者确认'}}
+  </button>
+</view>

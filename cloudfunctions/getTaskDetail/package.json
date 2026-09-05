@@ -1,0 +1,9 @@
+{
+  "name": "get-task-detail",
+  "version": "1.0.0",
+  "description": "安全读取校园社区云端任务详情",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}

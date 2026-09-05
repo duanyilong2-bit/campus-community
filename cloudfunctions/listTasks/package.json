@@ -1,0 +1,9 @@
+{
+  "name": "list-tasks",
+  "version": "1.0.0",
+  "description": "读取校园社区云端任务列表",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}

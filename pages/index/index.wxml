@@ -1,0 +1,115 @@
+<view class="home-page motion-page">
+  <view class="community-hero motion-card">
+    <view class="hero-shape hero-shape-one"></view>
+    <view class="hero-shape hero-shape-two"></view>
+    <view class="hero-grid"></view>
+    <view class="hero-topline">
+      <view class="school-pill">文华学院专属</view>
+      <view class="online-pill"><text></text>云端在线</view>
+    </view>
+    <view class="hero-brand-row">
+      <view><view class="hero-eyebrow">WENHUA CAMPUS</view><view class="hero-title">文华校园社区</view></view>
+    </view>
+    <view class="hero-subtitle">分享校园生活，寻找同学互助，发现身边的新鲜事</view>
+    <view class="hero-keywords">
+      <text>校园动态</text><text>同学互助</text><text>失物招领</text><text>学习交流</text>
+    </view>
+  </view>
+
+  <view class="search-box pressable motion-card">
+    <text class="search-icon">⌕</text>
+    <input class="search-input" placeholder="搜索帖子、跑腿任务、校园信息" value="{{keyword}}" bindinput="onSearchInput" />
+    <view class="clear-search" wx:if="{{keyword}}" bindtap="clearSearch">×</view>
+  </view>
+
+  <view class="home-progress motion-card" wx:if="{{!isSearching && homeTask}}">
+    <view class="home-progress-head">
+      <view class="home-progress-title">我的进行中任务</view>
+      <view class="home-progress-all pressable" bindtap="openHomeTaskList">查看全部{{homeTaskTotal > 1 ? ' · ' + homeTaskTotal : ''}} ›</view>
+    </view>
+      <view class="home-progress-main pressable" data-id="{{homeTask.id}}" data-source="cloud" data-role="{{homeTask.role}}" data-status="{{homeTask.status}}" data-order-id="{{homeTask.sourceId}}" bindtap="openTaskDetail">
+      <view class="home-progress-info">
+        <view class="home-progress-name">{{homeTask.title}}</view>
+        <view class="home-role-tag">{{homeTask.roleText}}</view>
+        <view class="home-state-tag state-{{homeTask.status}}">{{homeTask.statusText}}</view>
+      </view>
+      <view class="mini-progress">
+        <block wx:for="{{homeTask.progressSteps}}" wx:key="label">
+          <view class="mini-step {{item.done ? 'mini-done' : ''}} {{item.current ? 'mini-current' : ''}}">
+            <view class="mini-dot">{{item.done ? '✓' : ''}}</view>
+            <view class="mini-label">{{item.label}}</view>
+          </view>
+          <view class="mini-line {{item.lineDone ? 'mini-line-done' : ''}}" wx:if="{{index < homeTask.progressSteps.length - 1}}"></view>
+        </block>
+        <view class="home-progress-action">{{homeTask.actionText}} ›</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="community-entry motion-card" wx:if="{{!isSearching}}">
+    <view class="entry-main pressable" bindtap="goForum">
+      <view class="entry-icon">圈</view>
+      <view class="entry-copy"><view>逛逛文华校园圈</view><text>看看同学们正在分享什么</text></view>
+      <text class="entry-arrow">›</text>
+    </view>
+    <view class="entry-publish pressable" bindtap="openPublishMenu">＋ 发布</view>
+  </view>
+
+  <view class="search-summary" wx:if="{{isSearching}}">
+    正在全站搜索“{{keyword}}”，找到 {{posts.length}} 篇帖子和 {{tasks.length}} 个任务
+  </view>
+
+  <view class="section-heading">
+    <view><view class="section-title">{{isSearching ? '相关校园帖子' : '校园新鲜事'}}</view><view class="section-source"><text></text>{{postSourceText}}</view></view>
+    <view class="view-all" bindtap="goForum">查看校园圈 ›</view>
+  </view>
+
+  <view class="content-empty" wx:if="{{!isLoading && posts.length === 0}}">
+    <view>暂时没有找到相关帖子</view>
+    <text bindtap="openPublishMenu">去发布一条校园动态 ›</text>
+  </view>
+
+  <view class="post-card motion-card pressable" wx:for="{{posts}}" wx:key="id" data-id="{{item.id}}" bindtap="openPost" style="animation-delay: {{index * 55 + 80}}ms">
+    <view class="post-head">
+      <image class="post-avatar" wx:if="{{item.authorAvatarUrl}}" src="{{item.authorAvatarUrl}}" mode="aspectFill" />
+      <view class="post-avatar" wx:else>{{item.avatarText}}</view>
+      <view class="post-author"><view class="post-author-line"><view>{{item.authorName}}</view><view class="identity-badge" wx:if="{{!item.isAuthorVerified}}"><text>!</text>未认证</view></view><text>{{item.createdAt}}</text></view>
+      <view class="post-category">#{{item.category}}</view>
+    </view>
+    <view class="post-content">{{item.content}}</view>
+    <view class="post-footer"><text>浏览 {{item.viewCount}}</text><text>♡ {{item.likeCount}}</text><text>评论 {{item.commentCount}}</text><view>查看讨论 ›</view></view>
+  </view>
+
+  <view class="service-panel motion-card" wx:if="{{!isSearching}}">
+    <view class="service-title">校园互助服务</view>
+    <view class="service-subtitle">需要跑腿、打印或兼职帮助，可以从这里进入</view>
+    <view class="quick-services">
+      <view class="quick-item pressable" wx:for="{{quickServices}}" wx:key="name" data-category="{{item.category}}" bindtap="selectQuickService">
+        <view class="quick-icon quick-{{item.tone}}">{{item.icon}}</view>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-heading task-heading">
+    <view><view class="section-title">{{isSearching ? '相关互助任务' : '最新互助任务'}}</view><view class="section-source task-source"><text></text>{{taskSourceText}}</view></view>
+    <view class="view-all" bindtap="openTaskHall">任务大厅 ›</view>
+  </view>
+
+  <view class="content-empty" wx:if="{{!isLoading && tasks.length === 0}}">
+    <view>暂时没有找到相关任务</view>
+    <text bindtap="openPublishMenu">发布一个互助需求 ›</text>
+  </view>
+
+  <view class="task-card motion-card pressable" wx:for="{{tasks}}" wx:key="id" data-id="{{item.id}}" data-source="{{item.dataSource}}" bindtap="openTaskDetail" style="animation-delay: {{index * 55 + 100}}ms">
+    <view class="task-card-top">
+      <view class="task-avatar">{{item.avatarText}}</view>
+      <view class="task-tags"><text class="category-tag">{{item.category}}</text><view class="anonymous-label" wx:if="{{item.isAnonymous}}">匿名用户</view><view class="identity-badge" wx:if="{{!item.isPublisherVerified}}"><text>!</text>未认证</view><text class="status-tag status-{{item.status}}">{{item.statusText}}</text></view>
+      <text class="card-arrow">›</text>
+    </view>
+    <view class="task-title">{{item.title}}</view>
+    <view class="task-description" wx:if="{{item.description}}">{{item.description}}</view>
+    <view class="task-meta"><text>⌖ {{item.location}}</text><text>截止 {{item.deadline}}</text></view>
+    <view class="task-footer"><view class="reward"><text>¥</text><text class="reward-number">{{item.reward}}</text><text>元</text></view><view class="detail-button">{{item.status === 'WAITING' ? '查看并接单' : '查看进度'}} ›</view></view>
+  </view>
+</view>

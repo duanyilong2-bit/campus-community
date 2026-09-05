@@ -1,0 +1,27 @@
+<view class="page-container">
+  <view class="page-title">确认任务</view>
+  <view class="page-description">查看接单者提交的完成凭证，确认后任务将结束。</view>
+
+  <view class="loading-card" wx:if="{{isLoading}}">正在读取完成凭证…</view>
+
+  <block wx:elif="{{task}}">
+    <view class="card summary-card">
+      <view class="status-row"><text class="category">{{task.category}}</text><text class="status">待确认</text></view>
+      <view class="task-title">{{task.title}}</view>
+      <view class="meta-row"><text>任务地点</text><text>{{task.location}}</text></view>
+      <view class="meta-row"><text>任务报酬</text><text class="reward">¥{{task.reward}}</text></view>
+    </view>
+
+    <view class="card proof-card">
+      <view class="card-title">接单者完成凭证</view>
+      <view class="empty-proof" wx:if="{{!task.proofText && (!task.proofImages || task.proofImages.length === 0)}}">接单者未填写文字或图片凭证</view>
+      <view class="proof-text" wx:if="{{task.proofText}}">{{task.proofText}}</view>
+      <view class="proof-images" wx:if="{{task.proofImages && task.proofImages.length > 0}}">
+        <image wx:for="{{task.proofImages}}" wx:for-item="image" wx:key="*this" class="proof-image" src="{{image}}" mode="aspectFill" data-current="{{image}}" data-urls="{{task.proofImages}}" catchtap="previewProofImage" />
+      </view>
+    </view>
+
+    <button class="confirm-button" loading="{{isConfirming}}" disabled="{{isConfirming}}" bindtap="confirmTask">确认完成</button>
+    <view class="safe-tip">请核对凭证与实际完成情况后再确认。</view>
+  </block>
+</view>

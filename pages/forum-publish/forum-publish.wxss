@@ -1,0 +1,24 @@
+.forum-publish-page { padding-top: 30rpx; padding-bottom: 70rpx; }
+.publish-heading { padding: 0 5rpx; }
+.publish-kicker { margin-bottom: 10rpx; color: #2d89e7; font-size: 23rpx; font-weight: 800; }
+.form-card, .image-card { padding: 29rpx; }
+.field-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 17rpx; }
+.content-header { margin-top: 30rpx; }
+.field-label { color: #303b4e; font-size: 27rpx; font-weight: 850; }
+.required { padding: 5rpx 11rpx; background: #eff6ff; color: #2d86df; font-size: 18rpx; border-radius: 999rpx; }
+.field-tip { color: #9aa3b2; font-size: 20rpx; }
+.category-grid { display: flex; flex-wrap: wrap; margin: 0 -7rpx; }
+.category-option { box-sizing: border-box; display: flex; align-items: center; width: calc(33.333% - 14rpx); margin: 7rpx; padding: 17rpx 12rpx; background: #f7f9fc; color: #657186; font-size: 22rpx; border: 2rpx solid #e7ecf3; border-radius: 16rpx; }
+.category-check { display: flex; align-items: center; justify-content: center; width: 29rpx; height: 29rpx; margin-right: 7rpx; color: #96a0af; font-size: 18rpx; border-radius: 50%; }
+.category-selected { background: #eaf4ff; color: #237edb; font-weight: 800; border-color: #55a5f2; }
+.category-selected .category-check { background: #2f8ee9; color: #ffffff; }
+.content-input { box-sizing: border-box; width: 100%; height: 290rpx; padding: 22rpx; background: #f7f9fc; color: #303b4d; font-size: 26rpx; line-height: 1.65; border: 1rpx solid #e7ecf3; border-radius: 18rpx; }
+.image-grid { display: flex; flex-wrap: wrap; margin: 0 -7rpx; }
+.image-item, .add-image { position: relative; box-sizing: border-box; width: 184rpx; height: 184rpx; margin: 7rpx; border-radius: 18rpx; }
+.selected-image { width: 100%; height: 100%; border-radius: 18rpx; }
+.remove-image { position: absolute; top: -12rpx; right: -12rpx; display: flex; align-items: center; justify-content: center; width: 40rpx; height: 40rpx; background: #202a3b; color: #fff; font-size: 28rpx; border: 4rpx solid #fff; border-radius: 50%; }
+.add-image { display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f7f9fc; color: #8792a3; font-size: 21rpx; border: 2rpx dashed #d6dee9; }
+.add-image text { margin-bottom: 5rpx; color: #2e89e6; font-size: 45rpx; font-weight: 300; }
+.image-tip { margin-top: 14rpx; color: #a0a8b6; font-size: 20rpx; }
+.safety-notice { display: flex; align-items: flex-start; margin: 4rpx 2rpx 20rpx; padding: 20rpx; background: #fff9eb; color: #8b7443; font-size: 21rpx; line-height: 1.6; border-radius: 18rpx; }
+.safety-notice text { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 32rpx; height: 32rpx; margin: 2rpx 12rpx 0 0; background: #f1bd44; color: #fff; font-weight: 800; border-radius: 50%; }

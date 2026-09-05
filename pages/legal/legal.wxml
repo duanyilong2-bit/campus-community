@@ -1,0 +1,35 @@
+<view class="legal-page">
+  <view class="hero">
+    <view class="hero-title">协议与安全规范</view>
+    <view class="hero-copy">请在发布任务或校园圈内容前认真阅读</view>
+  </view>
+
+  <view class="section">
+    <view class="title">用户服务协议（测试版）</view>
+    <view class="paragraph">校园社区用于文华学院同学之间分享校园生活、互动交流，以及发布和承接校园互助任务。用户应当提供真实、合法、清楚的信息，不得利用平台实施欺诈、骚扰、侵权或其他违法行为。</view>
+    <view class="paragraph">当前任务金额仅为测试展示，不代表平台已经提供担保、托管、支付或赔付服务。线下行为请自行确认安全，涉及贵重物品或高风险事项时请谨慎处理。</view>
+  </view>
+
+  <view class="section">
+    <view class="title">隐私保护说明</view>
+    <view class="paragraph">小程序通过微信云开发获取用于识别账号的 OPENID，并生成内部用户编号；页面不会公开完整 OPENID。昵称、头像、帖子、评论、任务和完成凭证将按功能需要保存到 CloudBase。</view>
+    <view class="paragraph">请勿在公开内容中填写手机号、身份证号、宿舍门牌、密码或其他敏感信息。你可以删除自己发布的帖子；其他数据删除需求可通过客服入口反馈。</view>
+  </view>
+
+  <view class="section">
+    <view class="title">校园圈社区规范</view>
+    <view class="rule">1. 友善交流，不侮辱、攻击或骚扰他人。</view>
+    <view class="rule">2. 不发布虚假信息、违法兼职、刷单、赌博或诈骗内容。</view>
+    <view class="rule">3. 不泄露他人隐私，不冒充学校、老师或其他同学。</view>
+    <view class="rule">4. 不发布广告营销、色情暴力及其他不适宜内容。</view>
+    <view class="rule">5. 发现问题可使用帖子右上角的举报功能。</view>
+  </view>
+
+  <view class="section">
+    <view class="title">安全提示</view>
+    <view class="paragraph">不接取明显违法、危险或超出个人能力的任务；尽量在校园公共区域交接；发生争议时保留聊天、任务说明和完成凭证，并停止继续交易。</view>
+  </view>
+
+  <button class="accept-button accepted" wx:if="{{accepted}}" disabled>已同意当前版本</button>
+  <button class="accept-button" wx:else bindtap="acceptPolicies">我已阅读并同意</button>
+</view>

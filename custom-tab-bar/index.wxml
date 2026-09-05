@@ -1,0 +1,19 @@
+<view class="tab-bar-safe-area">
+  <view class="tab-bar">
+    <view
+      class="tab-item {{index === 2 ? 'tab-publish-item' : ''}} {{selected === index ? 'tab-item-active' : ''}}"
+      wx:for="{{tabs}}"
+      wx:key="pagePath"
+      data-index="{{index}}"
+      data-path="{{item.pagePath}}"
+      bindtap="switchTab"
+    >
+      <view wx:if="{{index === 2}}" class="publish-orbit">
+        <view class="publish-button">+</view>
+      </view>
+      <view wx:else class="tab-icon">{{item.icon}}</view>
+      <text class="tab-text">{{item.text}}</text>
+      <view class="active-dot" wx:if="{{selected === index && index !== 2}}"></view>
+    </view>
+  </view>
+</view>

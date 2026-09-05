@@ -1,0 +1,9 @@
+{
+  "name": "get-my-task-data",
+  "version": "1.0.0",
+  "description": "按可信身份读取我的订单或我的发布",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}

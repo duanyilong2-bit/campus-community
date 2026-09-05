@@ -1,0 +1,73 @@
+<view class="forum-page motion-page">
+  <view class="forum-header motion-card">
+    <view><view class="forum-eyebrow">WENHUA MOMENTS</view><view class="forum-title">文华校园圈</view><view class="forum-subtitle">同学之间，分享与互助</view></view>
+    <view class="header-actions">
+      <view class="message-button pressable" bindtap="openNotifications">消息<text wx:if="{{unreadCount > 0}}">{{unreadCount > 99 ? '99+' : unreadCount}}</text></view>
+      <view class="publish-post pressable" bindtap="openPublishPost">＋ 发帖子</view>
+    </view>
+  </view>
+
+  <view class="search-box motion-card">
+    <text class="search-icon">⌕</text>
+    <input class="search-input" placeholder="搜索校园圈内容" value="{{keyword}}" bindinput="onSearchInput" />
+  </view>
+
+  <scroll-view class="category-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="category-list">
+      <view class="category-tab {{selectedCategory === item ? 'category-active' : ''}}" wx:for="{{categories}}" wx:key="*this" data-category="{{item}}" bindtap="selectCategory">{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="hot-card motion-card pressable" wx:if="{{hotPost}}" data-id="{{hotPost.id}}" bindtap="openPost">
+    <view class="hot-glow"></view>
+    <view class="hot-heading">
+      <view class="hot-badge">🔥 今日热点</view>
+      <view class="hot-top">TOP 1</view>
+    </view>
+    <view class="hot-title">{{hotPost.content}}</view>
+    <view class="hot-bottom">
+      <view class="hot-category">#{{hotPost.category}}</view>
+      <view class="hot-metrics"><text>浏览 {{hotPost.viewCount}}</text><text>♥ {{hotPost.likeCount}}</text><text>热度 {{hotPost.hotScore}}</text></view>
+    </view>
+    <view class="hot-rule">今日热度按“{{hotRule}}”综合排名 <text>查看 ›</text></view>
+  </view>
+
+  <view class="hot-empty" wx:else>
+    <view class="hot-empty-icon">🔥</view>
+    <view class="hot-empty-copy"><view class="hot-empty-title">今日热点正在升温</view><text>今天产生浏览和点赞后，榜首会自动出现在这里</text></view>
+  </view>
+
+  <view class="source-line"><text class="source-dot"></text>{{dataSourceText}} · 共 {{total}} 条</view>
+
+  <view class="empty-state" wx:if="{{!isLoading && posts.length === 0}}">
+    <view class="empty-icon">聊</view>
+    <view class="empty-title">校园圈还没有相关内容</view>
+    <view class="empty-text">成为第一个发帖的同学吧</view>
+    <view class="empty-button" bindtap="openPublishPost">发布第一篇帖子</view>
+  </view>
+
+  <view class="post-card motion-card pressable" wx:for="{{posts}}" wx:key="id" data-id="{{item.id}}" bindtap="openPost" style="animation-delay: {{index * 55 + 90}}ms">
+    <view class="post-head">
+      <image class="post-avatar" wx:if="{{item.authorAvatarUrl}}" src="{{item.authorAvatarUrl}}" mode="aspectFill" />
+      <view class="post-avatar" wx:else>{{item.avatarText}}</view>
+      <view class="author-copy">
+        <view class="author-line"><view class="author-name">{{item.authorName}}</view><view class="identity-badge" wx:if="{{!item.isAuthorVerified}}"><text>!</text>未认证</view></view>
+        <view class="post-time">{{item.createdAt}}</view>
+      </view>
+      <view class="post-category">#{{item.category}}</view>
+      <view class="post-more" data-id="{{item.id}}" data-author="{{item.isAuthor}}" catchtap="handlePostMenu">•••</view>
+    </view>
+    <view class="post-content">{{item.content}}</view>
+    <view class="post-images images-{{item.postImages.length}}" wx:if="{{item.postImages.length > 0}}">
+      <image class="post-image" wx:for="{{item.postImages}}" wx:for-item="image" wx:key="*this" src="{{image}}" mode="aspectFill" data-current="{{image}}" data-urls="{{item.postImages}}" catchtap="previewImage" />
+    </view>
+    <view class="post-actions">
+      <view class="action-item"><text>浏览</text> {{item.viewCount}}</view>
+      <view class="action-item {{item.liked ? 'liked' : ''}}" data-id="{{item.id}}" catchtap="toggleLike"><text>{{item.liked ? '♥' : '♡'}}</text> {{item.likeCount}}</view>
+      <view class="action-item"><text>评论</text> {{item.commentCount}}</view>
+      <view class="open-detail">查看讨论 ›</view>
+    </view>
+  </view>
+  <view class="load-more" wx:if="{{hasMore}}" bindtap="onReachBottom">{{isLoadingMore ? '正在加载…' : '加载更多'}}</view>
+  <view class="list-end" wx:elif="{{posts.length > 0 && !isLoading}}">已经到底了</view>
+</view>

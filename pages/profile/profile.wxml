@@ -1,0 +1,74 @@
+<view class="profile-page motion-page">
+  <view class="profile-hero motion-card">
+    <view class="hero-glow glow-one"></view>
+    <view class="hero-glow glow-two"></view>
+    <view class="user-row">
+      <image class="avatar avatar-image" wx:if="{{avatarUrl}}" src="{{avatarUrl}}" mode="aspectFill" />
+      <view class="avatar" wx:else>文</view>
+      <view class="user-copy">
+        <view class="nickname">{{nickname}}</view>
+        <view class="identity"><text class="identity-dot"></text>{{identityText}}</view>
+      </view>
+      <view class="profile-actions">
+        <view class="edit-profile pressable" bindtap="openEditProfile">编辑资料 <text>›</text></view>
+      </view>
+    </view>
+    <view class="campus-position pressable" bindtap="openSafetyCenter">
+      <view class="campus-icon">校</view>
+      <view class="campus-copy">
+        <text class="position-label">当前校园</text>
+        <text class="campus-name">{{schoolName}}</text>
+      </view>
+      <view class="verified {{campusVerified ? 'verified-active' : ''}}">
+        <text>{{campusVerified ? '✓' : '!'}}</text>
+        {{campusVerified ? '校园已认证' : '去完成认证'}}
+        <text class="verified-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="stats-card motion-card">
+    <view class="stats-title-row">
+      <view><view class="stats-title">我的校园互助</view><view class="stats-caption">数据来自 CloudBase 云端</view></view>
+      <view class="cloud-state"><text></text>实时同步</view>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-item" bindtap="openMyPublished"><text class="stat-number">{{stats.published}}</text><text class="stat-label">我的发布</text></view>
+      <view class="stat-item" bindtap="openMyOrders"><text class="stat-number">{{stats.accepted}}</text><text class="stat-label">我的接单</text></view>
+      <view class="stat-item" bindtap="openMyOrders"><text class="stat-number">{{stats.completed}}</text><text class="stat-label">已完成</text></view>
+    </view>
+  </view>
+
+  <view class="blue-notice motion-card pressable" bindtap="showGuide">
+    <text class="notice-hand">☞</text>
+    <view class="notice-copy"><view>校园互助，从一次靠谱的帮助开始</view><text>任务进度清楚，完成凭证可查看</text></view>
+    <text class="notice-arrow">›</text>
+  </view>
+
+  <view class="function-card motion-card">
+    <view class="section-title">常用功能</view>
+    <view class="section-caption">内容互动与校园互助</view>
+    <view class="function-grid">
+      <view class="function-item pressable" bindtap="openMyPublished"><view class="function-icon icon-blue">发</view><text>我的发布</text></view>
+      <view class="function-item pressable" bindtap="openMyOrders"><view class="function-icon icon-green">单</view><text>我的订单</text></view>
+      <view class="function-item pressable" bindtap="openMyPosts"><view class="function-icon icon-purple">帖</view><text>我的帖子</text></view>
+      <view class="function-item notification-function pressable" bindtap="openNotifications"><view class="function-icon icon-cyan">铃</view><text>消息中心</text><view class="function-badge" wx:if="{{unreadCount > 0}}">{{unreadCount > 99 ? '99+' : unreadCount}}</view></view>
+      <view class="function-item pressable" bindtap="openPublish"><view class="function-icon icon-orange">＋</view><text>发布任务</text></view>
+      <view class="function-item pressable" bindtap="openTasks"><view class="function-icon icon-purple">任</view><text>任务大厅</text></view>
+      <view class="function-item pressable" bindtap="showProofInfo"><view class="function-icon icon-blue">图</view><text>完成凭证</text></view>
+      <view class="function-item pressable" bindtap="showGuide"><view class="function-icon icon-green">?</view><text>使用说明</text></view>
+    </view>
+  </view>
+
+  <view class="info-card motion-card">
+    <view class="info-row admin-row" wx:if="{{isAdmin}}" bindtap="openAdminModeration"><text>举报处理后台</text><text class="row-arrow">›</text></view>
+    <view class="info-row admin-row" wx:if="{{isAdmin}}" bindtap="openAdminSafety"><text>认证与争议后台</text><text class="row-arrow">›</text></view>
+    <view class="info-row" bindtap="openSafetyCenter"><text>账号与安全中心</text><text class="row-arrow">›</text></view>
+    <view class="info-row" bindtap="openLegal"><text>用户协议与社区规范</text><text class="row-arrow">›</text></view>
+    <button class="info-row contact-row" open-type="contact"><text>联系客服</text><text class="row-arrow">›</text></button>
+    <view class="info-row" bindtap="showAbout"><text>当前版本</text><view>CloudBase MVP <text class="row-arrow">›</text></view></view>
+    <view class="info-row" bindtap="openSafetyCenter"><text>账号与数据安全</text><text class="row-arrow">›</text></view>
+  </view>
+
+  <view class="version-text">校园社区 · 文华学院测试版</view>
+</view>

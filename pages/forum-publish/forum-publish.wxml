@@ -1,0 +1,46 @@
+<view class="page-container forum-publish-page">
+  <view class="publish-heading">
+    <view class="publish-kicker">文华校园圈</view>
+    <view class="page-title">分享校园新鲜事</view>
+    <view class="page-description">友善交流，不发布隐私、广告或不实信息</view>
+  </view>
+
+  <view class="verification-warning" wx:if="{{showVerificationWarning}}" bindtap="openSafetyCenter">
+    <view class="verification-mark">!</view><view class="verification-copy"><text>当前账号尚未完成校园认证</text><text>仍可发帖，但请勿发布隐私、广告或不实信息</text></view><text class="verification-link">去认证 ›</text>
+  </view>
+
+  <view class="card form-card">
+    <view class="field-header"><text class="field-label">选择帖子分类</text><text class="required">必选</text></view>
+    <view class="category-grid">
+      <view
+        class="category-option {{selectedCategory === item ? 'category-selected' : ''}}"
+        wx:for="{{categories}}"
+        wx:key="*this"
+        data-category="{{item}}"
+        bindtap="selectCategory"
+      >
+        <text class="category-check">{{selectedCategory === item ? '✓' : '#'}}</text>
+        {{item}}
+      </view>
+    </view>
+
+    <view class="field-header content-header"><text class="field-label">帖子内容</text><text class="field-tip">{{content.length}} / 500</text></view>
+    <textarea class="content-input" maxlength="500" placeholder="例如：今天在教学楼附近捡到一张校园卡……" value="{{content}}" bindinput="onContentInput" />
+  </view>
+
+  <view class="card image-card">
+    <view class="field-header"><text class="field-label">添加图片</text><text class="field-tip">选填 · 最多{{maxImages}}张</text></view>
+    <view class="image-grid">
+      <view class="image-item" wx:for="{{images}}" wx:key="tempFilePath" data-index="{{index}}" bindtap="previewImage">
+        <image class="selected-image" src="{{item.tempFilePath}}" mode="aspectFill" />
+        <view class="remove-image" data-index="{{index}}" catchtap="removeImage">×</view>
+      </view>
+      <view class="add-image" wx:if="{{images.length !== maxImages}}" bindtap="addImages"><text>＋</text><view>图片</view></view>
+    </view>
+    <view class="image-tip">图片发布前会经过安全检查，单张不超过 1MB</view>
+  </view>
+
+  <view class="safety-notice"><text>i</text><view>帖子将公开显示给文华学院校园社区体验用户，请勿填写手机号、宿舍号等敏感信息。</view></view>
+
+  <button class="primary-button" loading="{{isSubmitting}}" disabled="{{isSubmitting}}" bindtap="publishPost">{{isSubmitting ? '正在发布…' : '发布到校园圈'}}</button>
+</view>

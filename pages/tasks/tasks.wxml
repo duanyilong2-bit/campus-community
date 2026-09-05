@@ -1,0 +1,61 @@
+<view class="hall-page">
+  <view class="hall-banner">
+    <view class="banner-circle circle-one"></view>
+    <view class="banner-circle circle-two"></view>
+    <view class="banner-kicker">WENHUA CAMPUS</view>
+    <view class="banner-title">文华学院校园互助</view>
+    <view class="banner-subtitle">跑腿、代办、打印与兼职任务都在这里</view>
+  </view>
+
+  <view class="hall-actions">
+    <view class="hall-action active-action">
+      <view class="action-icon">任</view>
+      <view><view class="action-title">任务大厅</view><view class="action-copy">浏览同校需求</view></view>
+    </view>
+    <view class="hall-action" bindtap="goPublish">
+      <view class="action-icon publish-icon">＋</view>
+      <view><view class="action-title">发布需求</view><view class="action-copy">请同学来帮忙</view></view>
+    </view>
+  </view>
+
+  <view class="task-search">
+    <text>⌕</text>
+    <input placeholder="搜索任务标题、地点或分类" value="{{keyword}}" bindinput="onSearchInput" />
+  </view>
+
+  <scroll-view class="filter-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="filter-list">
+      <view class="filter-tab {{selectedFilter === item.value ? 'filter-active' : ''}}" wx:for="{{filters}}" wx:key="value" data-value="{{item.value}}" bindtap="selectFilter">{{item.label}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="source-row">
+    <view><text class="source-dot"></text>{{dataSourceText}}</view>
+    <text>共 {{total}} 条</text>
+  </view>
+
+  <view class="empty-state" wx:if="{{tasks.length === 0}}">
+    <view class="empty-icon">空</view>
+    <view class="empty-title">这个分类暂时没有任务</view>
+    <view class="empty-text">可以看看其他分类，或发布一个新需求</view>
+  </view>
+
+  <view class="task-card" wx:for="{{tasks}}" wx:key="id" data-id="{{item.id}}" data-source="{{item.dataSource}}" bindtap="openTaskDetail">
+    <view class="task-card-head">
+      <view class="location-tag">{{item.location || '文华学院'}}</view>
+      <view class="anonymous-label" wx:if="{{item.isAnonymous}}">匿名用户</view>
+      <view class="identity-badge" wx:if="{{!item.isPublisherVerified}}"><text>!</text>未认证</view>
+      <text class="deadline">截止 {{item.deadline}}</text>
+      <text class="task-status status-{{item.status}}">{{item.statusText}}</text>
+    </view>
+    <view class="task-category"># {{item.category}}</view>
+    <view class="task-title">{{item.title}}</view>
+    <view class="task-description" wx:if="{{item.description}}">{{item.description}}</view>
+    <view class="task-bottom">
+      <view class="reward"><text class="reward-badge">酬</text><text class="reward-symbol">¥</text><text class="reward-number">{{item.reward}}</text><text class="reward-unit">元</text></view>
+      <view class="task-action {{item.status === 'WAITING' ? '' : 'action-secondary'}}">{{item.actionText}}</view>
+    </view>
+  </view>
+  <view class="load-more" wx:if="{{hasMore}}" bindtap="onReachBottom">{{isLoadingMore ? '正在加载…' : '加载更多'}}</view>
+  <view class="list-end" wx:elif="{{tasks.length > 0 && !isLoading}}">已经到底了</view>
+</view>

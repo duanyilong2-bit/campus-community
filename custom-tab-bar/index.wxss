@@ -1,0 +1,102 @@
+.tab-bar-safe-area {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: 28rpx;
+  background: linear-gradient(180deg, rgba(246,248,252,0), rgba(246,248,252,.96) 34%, #f6f8fc 100%);
+}
+
+.tab-bar {
+  position: relative;
+  display: flex;
+  height: 112rpx;
+  margin: 0 20rpx 14rpx;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1rpx solid rgba(220,228,239,.88);
+  border-radius: 34rpx;
+  box-shadow: 0 16rpx 46rpx rgba(31, 64, 108, .16);
+}
+
+.tab-item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #9aa4b5;
+  transition: color .22s ease, transform .18s ease;
+}
+.tab-item:active { transform: scale(.92); }
+
+.tab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 49rpx;
+  height: 45rpx;
+  font-size: 29rpx;
+  font-weight: 800;
+  border: 3rpx solid currentColor;
+  border-radius: 16rpx;
+  transition: background .22s ease, transform .25s cubic-bezier(.22,.72,.24,1);
+}
+
+.tab-text {
+  margin-top: 7rpx;
+  font-size: 21rpx;
+}
+
+.tab-item-active {
+  color: #2388f5;
+}
+.tab-item-active .tab-icon { background: #edf6ff; transform: translateY(-3rpx); }
+.active-dot { position: absolute; bottom: 8rpx; width: 9rpx; height: 9rpx; background: #268af2; border-radius: 50%; animation: dot-pop .28s cubic-bezier(.2,.8,.2,1.2) both; }
+
+.tab-publish-item {
+  justify-content: flex-end;
+}
+
+.publish-orbit {
+  position: absolute;
+  top: -48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 122rpx;
+  height: 122rpx;
+  background: rgba(63, 160, 255, 0.11);
+  border: 2rpx solid rgba(63, 160, 255, 0.18);
+  border-radius: 50%;
+  animation: orbit-breathe 2.8s ease-in-out infinite;
+}
+
+.publish-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92rpx;
+  height: 92rpx;
+  background: linear-gradient(145deg, #40b9f7, #2574ea 68%, #264ed5);
+  color: #ffffff;
+  font-size: 58rpx;
+  font-weight: 300;
+  line-height: 1;
+  border: 7rpx solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 8rpx 24rpx rgba(36, 136, 245, 0.35);
+}
+
+.tab-publish-item .tab-text {
+  margin-bottom: 10rpx;
+  color: #2388f5;
+}
+
+@keyframes orbit-breathe {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(55,147,245,.05); }
+  50% { transform: scale(1.035); box-shadow: 0 0 0 10rpx rgba(55,147,245,.03); }
+}
+@keyframes dot-pop { from { opacity: 0; transform: scale(.25); } to { opacity: 1; transform: scale(1); } }

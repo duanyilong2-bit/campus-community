@@ -1,0 +1,24 @@
+<view class="page-container notifications-page">
+  <view class="page-title">消息中心</view>
+  <view class="page-description">任务进度、校园互动和平台处理结果都会显示在这里</view>
+
+  <view class="empty-card" wx:if="{{!isLoading && notifications.length === 0}}">
+    <view class="empty-icon">铃</view>
+    <view class="empty-title">暂时没有新消息</view>
+    <view class="empty-copy">任务状态或校园互动更新后会及时出现</view>
+    <view class="empty-action" bindtap="openForum">去校园圈看看</view>
+  </view>
+
+  <view class="notice-card {{item.isRead ? '' : 'unread-card'}}" wx:for="{{notifications}}" wx:key="id" data-index="{{index}}" bindtap="openNotification">
+    <image class="notice-avatar" wx:if="{{item.actorAvatarUrl}}" src="{{item.actorAvatarUrl}}" mode="aspectFill" />
+    <view class="notice-avatar" wx:else>{{item.avatarText}}</view>
+    <view class="notice-main">
+      <view class="notice-title"><text>{{item.actorName}}</text> {{item.actionText}}</view>
+      <view class="comment-preview" wx:if="{{item.contentPreview}}">{{item.type === 'COMMENT' ? '“' + item.contentPreview + '”' : item.contentPreview}}</view>
+      <view class="post-preview" wx:if="{{item.isForumNotice && item.postPreview}}">原帖：{{item.postPreview}}</view>
+      <view class="post-preview" wx:if="{{item.isTaskNotice && item.taskTitle}}">任务：{{item.taskTitle}}</view>
+      <view class="notice-time">{{item.createdAt}}</view>
+    </view>
+    <text class="notice-arrow">›</text>
+  </view>
+</view>

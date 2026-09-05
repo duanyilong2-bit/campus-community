@@ -1,0 +1,133 @@
+<view class="page-container">
+  <view class="publish-header">
+    <view class="publish-kicker">发布一个新需求</view>
+    <view class="page-title">需要同学帮什么？</view>
+    <view class="page-description">信息写得越清楚，越容易被接单</view>
+  </view>
+
+  <view class="local-notice">
+    <view class="notice-icon">i</view>
+    <view>任务将保存到 CloudBase，仍不涉及真实支付</view>
+  </view>
+  <view class="verification-warning" wx:if="{{showVerificationWarning}}" bindtap="openSafetyCenter">
+    <view class="verification-mark">!</view><view class="verification-copy"><text>当前账号尚未完成校园认证</text><text>仍可发布，请勿填写隐私信息，交易前注意核验身份</text></view><text class="verification-link">去认证 ›</text>
+  </view>
+
+  <view class="card form-card">
+    <view class="form-item">
+      <text class="form-label">任务标题 <text class="required">*</text></text>
+      <input
+        class="form-input"
+        maxlength="30"
+        placeholder="例如：帮忙取快递"
+        value="{{title}}"
+        bindinput="onTitleInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">任务分类 <text class="required">*</text></text>
+      <picker
+        mode="selector"
+        range="{{categories}}"
+        value="{{categoryIndex}}"
+        bindchange="onCategoryChange"
+      >
+        <view class="picker-value">
+          <text>{{categories[categoryIndex]}}</text>
+          <text class="picker-arrow">⌄</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">任务描述 <text class="required">*</text></text>
+      <textarea
+        class="form-textarea"
+        maxlength="200"
+        placeholder="请简单说明任务内容"
+        value="{{description}}"
+        bindinput="onDescriptionInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">任务报酬 <text class="required">*</text></text>
+      <view class="input-with-suffix">
+        <input
+          class="form-input reward-input"
+          type="digit"
+          placeholder="请输入虚拟金额"
+          value="{{reward}}"
+          bindinput="onRewardInput"
+        />
+        <text class="input-suffix">元</text>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">任务地点 <text class="required">*</text></text>
+      <input
+        class="form-input"
+        maxlength="50"
+        placeholder="例如：学校东门"
+        value="{{location}}"
+        bindinput="onLocationInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">截止时间 <text class="required">*</text></text>
+      <view class="deadline-picker-grid">
+        <picker
+          class="deadline-picker"
+          mode="date"
+          value="{{deadlineDate}}"
+          start="{{today}}"
+          end="2099-12-31"
+          bindchange="onDeadlineDateChange"
+        >
+          <view class="picker-value deadline-picker-value {{deadlineDate ? '' : 'placeholder'}}">
+            <view class="deadline-copy">
+              <text class="deadline-caption">截止日期</text>
+              <text class="deadline-value-text">{{deadlineDate || '选择日期'}}</text>
+            </view>
+            <text class="picker-arrow">⌄</text>
+          </view>
+        </picker>
+        <picker
+          class="deadline-picker"
+          mode="time"
+          value="{{deadlineTime}}"
+          bindchange="onDeadlineTimeChange"
+        >
+          <view class="picker-value deadline-picker-value {{deadlineTime ? '' : 'placeholder'}}">
+            <view class="deadline-copy">
+              <text class="deadline-caption">具体时间</text>
+              <text class="deadline-value-text">{{deadlineTime || '选择时间'}}</text>
+            </view>
+            <text class="picker-arrow">⌄</text>
+          </view>
+        </picker>
+      </view>
+      <view class="deadline-hint">请填写任务最晚需要完成的日期和时间</view>
+    </view>
+
+    <view class="privacy-option">
+      <view class="privacy-copy">
+        <view class="privacy-title"><text class="privacy-icon">盾</text>匿名发布</view>
+        <view class="privacy-description">开启后，其他用户只会看到“匿名用户”</view>
+      </view>
+      <switch checked="{{isAnonymous}}" color="#2563eb" bindchange="onAnonymousChange" />
+    </view>
+  </view>
+
+  <button
+    class="primary-button"
+    loading="{{isSubmitting}}"
+    disabled="{{isSubmitting}}"
+    bindtap="publishTask"
+  >
+    确认发布
+  </button>
+</view>

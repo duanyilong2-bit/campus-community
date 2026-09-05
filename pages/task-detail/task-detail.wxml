@@ -1,0 +1,91 @@
+<block>
+  <view class="page-container" wx:if="{{isLoading}}">
+    <view class="loading-card">正在读取任务详情…</view>
+  </view>
+
+  <view class="page-container" wx:elif="{{task}}">
+  <view class="detail-hero">
+    <view class="tag-row">
+      <view class="tag">{{task.category}}</view>
+      <view class="status status-{{task.status}}">{{task.statusText}}</view>
+    </view>
+    <view class="detail-title">{{task.title}}</view>
+    <view class="anonymous-publisher" wx:if="{{task.isAnonymous && !task.isPublisher}}">发布者：匿名用户</view>
+    <view class="detail-owner-badge identity-badge" wx:if="{{!task.isPublisherVerified}}"><text>!</text>未认证</view>
+    <view class="hero-reward">
+      <text class="reward-symbol">¥</text>
+      <text class="reward-number">{{task.reward}}</text>
+      <text class="reward-label">任务报酬</text>
+    </view>
+  </view>
+
+  <view class="card progress-card {{task.progressAbnormal ? 'progress-abnormal' : ''}}">
+    <view class="progress-title-row">
+      <view class="card-title">任务进度</view>
+      <view class="progress-status">{{task.statusText}}</view>
+    </view>
+    <view class="progress-track">
+      <block wx:for="{{task.progressSteps}}" wx:key="label">
+        <view class="progress-step {{item.done ? 'step-done' : ''}} {{item.current ? 'step-current' : ''}}">
+          <view class="step-dot"><text wx:if="{{item.done}}">✓</text><text wx:else>{{index + 1}}</text></view>
+          <view class="step-label">{{item.label}}</view>
+        </view>
+        <view class="step-line {{item.lineDone ? 'line-done' : ''}}" wx:if="{{index < task.progressSteps.length - 1}}"></view>
+      </block>
+    </view>
+    <view class="progress-copy"><text class="progress-copy-dot"></text>{{task.progressCopy}}</view>
+  </view>
+
+  <view class="card info-card">
+    <view class="card-title">任务信息</view>
+    <view class="detail-row">
+      <view class="row-icon icon-location">⌖</view>
+      <view class="row-content">
+        <text class="detail-label">任务地点</text>
+        <text class="detail-value">{{task.location}}</text>
+      </view>
+    </view>
+    <view class="detail-row">
+      <view class="row-icon icon-time">期</view>
+      <view class="row-content">
+        <text class="detail-label">截止时间</text>
+        <text class="detail-value">{{task.deadline}}</text>
+      </view>
+    </view>
+    <view class="detail-row">
+      <view class="row-icon icon-created">发</view>
+      <view class="row-content">
+        <text class="detail-label">发布时间</text>
+        <text class="detail-value">{{task.createdAt}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card description-card">
+    <view class="description-title">任务说明</view>
+    <view class="description">{{task.description}}</view>
+  </view>
+
+  <view class="verification-warning" wx:if="{{showVerificationWarning && task.status === 'WAITING' && !task.isPublisher}}" bindtap="openSafetyCenter">
+    <view class="verification-mark">!</view><view class="verification-copy"><text>你当前尚未完成校园认证</text><text>仍可接单，请先与发布者核验任务信息并注意安全</text></view><text class="verification-link">去认证 ›</text>
+  </view>
+
+  <button
+    class="primary-button"
+    wx:if="{{task.status === 'WAITING' && !task.isPublisher}}"
+    loading="{{isAccepting}}"
+    disabled="{{isAccepting}}"
+    bindtap="acceptTask"
+  >
+    立即接单 · ¥{{task.reward}}
+  </button>
+
+  <button class="publisher-button" wx:elif="{{task.status === 'WAITING' && task.isPublisher}}" bindtap="openMyPublished">
+    管理我发布的任务
+  </button>
+
+  <button class="status-button" wx:else disabled>
+    {{task.statusText}}
+  </button>
+  </view>
+</block>

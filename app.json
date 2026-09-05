@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/forum/forum",
+    "pages/tasks/tasks",
+    "pages/publish/publish",
+    "pages/forum-publish/forum-publish",
+    "pages/forum-detail/forum-detail",
+    "pages/task-detail/task-detail",
+    "pages/task-confirm/task-confirm",
+    "pages/submit-proof/submit-proof",
+    "pages/orders/orders",
+    "pages/my-published/my-published",
+    "pages/profile/profile",
+    "pages/profile-edit/profile-edit",
+    "pages/my-posts/my-posts",
+    "pages/notifications/notifications",
+    "pages/legal/legal",
+    "pages/admin-moderation/admin-moderation",
+    "pages/help-center/help-center",
+    "pages/safety-center/safety-center",
+    "pages/dispute-submit/dispute-submit",
+    "pages/admin-safety/admin-safety"
+  ],
+  "window": {
+    "navigationBarTitleText": "校园社区",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f4f7fb",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8a94a6",
+    "selectedColor": "#2563eb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/forum/forum",
+        "text": "校园圈"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/tasks/tasks",
+        "text": "任务"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  }
+}

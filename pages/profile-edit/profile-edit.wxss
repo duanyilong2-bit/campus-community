@@ -1,0 +1,13 @@
+.edit-page { padding-top: 34rpx; padding-bottom: 70rpx; }
+.profile-card { padding: 34rpx 30rpx; }
+.avatar-area { position: relative; width: 150rpx; height: 150rpx; margin: 0 auto; }
+.edit-avatar { width: 150rpx; height: 150rpx; background: #eaf3ff; border: 7rpx solid #ffffff; border-radius: 50%; box-shadow: 0 10rpx 28rpx rgba(42, 125, 216, .18); }
+.avatar-placeholder { display: flex; align-items: center; justify-content: center; box-sizing: border-box; background: linear-gradient(145deg, #58afff, #277eda); color: #ffffff; font-size: 50rpx; font-weight: 900; }
+.camera-badge { position: absolute; right: -8rpx; bottom: 2rpx; display: flex; align-items: center; justify-content: center; width: 58rpx; height: 58rpx; background: #2787e8; color: #ffffff; font-size: 18rpx; border: 5rpx solid #ffffff; border-radius: 50%; }
+.avatar-tip { margin: 18rpx 0 34rpx; color: #909aaa; font-size: 21rpx; text-align: center; }
+.field-label { margin-bottom: 14rpx; color: #354156; font-size: 26rpx; font-weight: 850; }
+.nickname-input { box-sizing: border-box; width: 100%; height: 86rpx; padding: 0 20rpx; background: #f7f9fc; color: #2d394d; font-size: 26rpx; border: 1rpx solid #e5ebf2; border-radius: 18rpx; }
+.text-count { margin-top: 10rpx; color: #9ba4b2; font-size: 20rpx; text-align: right; }
+.school-row { display: flex; align-items: center; justify-content: space-between; margin-top: 28rpx; padding-top: 24rpx; color: #3a4659; font-size: 25rpx; border-top: 1rpx solid #edf1f5; }
+.school-row view { color: #788498; font-size: 22rpx; }
+.privacy-tip { margin: 0 4rpx; padding: 20rpx; background: #fff9eb; color: #89713d; font-size: 21rpx; line-height: 1.65; border-radius: 18rpx; }

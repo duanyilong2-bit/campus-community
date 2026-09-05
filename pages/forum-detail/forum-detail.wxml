@@ -1,0 +1,64 @@
+<view class="detail-page motion-page">
+  <view class="loading-card" wx:if="{{isLoading && !post}}">正在读取帖子…</view>
+
+  <block wx:if="{{post}}">
+    <view class="post-card">
+      <view class="post-head">
+        <image class="avatar" wx:if="{{post.authorAvatarUrl}}" src="{{post.authorAvatarUrl}}" mode="aspectFill" />
+        <view class="avatar" wx:else>{{post.avatarText}}</view>
+        <view class="author-copy">
+          <view class="author-line"><view class="author-name">{{post.authorName}}</view><view class="identity-badge" wx:if="{{!post.isAuthorVerified}}"><text>!</text>未认证</view></view>
+          <view class="post-time">{{post.createdAt}}</view>
+        </view>
+        <view class="category">#{{post.category}}</view>
+        <view class="post-more" bindtap="handlePostMenu">•••</view>
+      </view>
+      <view class="post-content">{{post.content}}</view>
+      <view class="post-images images-{{post.postImages.length}}" wx:if="{{post.postImages.length > 0}}">
+        <image class="post-image" wx:for="{{post.postImages}}" wx:for-item="image" wx:key="*this" src="{{image}}" mode="aspectFill" data-current="{{image}}" data-urls="{{post.postImages}}" bindtap="previewImage" />
+      </view>
+      <view class="post-actions">
+        <view class="like-button pressable {{post.liked ? 'liked like-pop' : ''}}" bindtap="toggleLike"><text class="heart-icon">{{post.liked ? '♥' : '♡'}}</text><text>点赞</text><text class="like-count">{{post.likeCount}}</text></view>
+        <view class="detail-metrics"><text>浏览 {{post.viewCount}}</text><text>{{post.commentCount}} 条评论</text></view>
+      </view>
+    </view>
+
+    <view class="comments-card">
+      <view class="comments-title">全部评论 <text>{{post.commentCount}}</text></view>
+      <view class="no-comments" wx:if="{{comments.length === 0}}">还没有评论，来聊第一句吧</view>
+      <view class="comment-thread" wx:for="{{comments}}" wx:key="id">
+      <view class="comment-item">
+        <image class="comment-avatar" wx:if="{{item.authorAvatarUrl}}" src="{{item.authorAvatarUrl}}" mode="aspectFill" />
+        <view class="comment-avatar" wx:else>{{item.avatarText}}</view>
+        <view class="comment-main">
+          <view class="comment-head"><text class="comment-author">{{item.authorName}}</text><view class="comment-head-right"><text class="comment-time">{{item.createdAt}}</text><text class="delete-comment" wx:if="{{item.isAuthor}}" data-id="{{item.id}}" bindtap="confirmDeleteComment">删除</text></view></view>
+          <view class="comment-content">{{item.content}}</view>
+          <view class="comment-actions">
+            <view class="comment-action pressable {{item.liked ? 'comment-liked' : ''}}" data-id="{{item.id}}" bindtap="toggleCommentLike"><text>{{item.liked ? '♥' : '♡'}}</text> {{item.likeCount}}</view>
+            <view class="comment-action reply-action pressable" data-id="{{item.id}}" data-author="{{item.authorName}}" bindtap="startReply">回复</view>
+          </view>
+        </view>
+      </view>
+      <view class="reply-list" wx:if="{{item.replies.length > 0}}">
+        <view class="reply-item" wx:for="{{item.replies}}" wx:for-item="reply" wx:key="id">
+          <view class="reply-line"></view>
+          <view class="reply-main">
+            <view class="reply-head"><text class="reply-author">{{reply.authorName}}</text><text class="reply-word">回复</text><text class="reply-target">{{reply.replyToAuthorName}}</text><text class="reply-time">{{reply.createdAt}}</text><text class="delete-comment" wx:if="{{reply.isAuthor}}" data-id="{{reply.id}}" bindtap="confirmDeleteComment">删除</text></view>
+            <view class="reply-content">{{reply.content}}</view>
+            <view class="comment-actions reply-actions">
+              <view class="comment-action pressable {{reply.liked ? 'comment-liked' : ''}}" data-id="{{reply.id}}" bindtap="toggleCommentLike"><text>{{reply.liked ? '♥' : '♡'}}</text> {{reply.likeCount}}</view>
+              <view class="comment-action reply-action pressable" data-id="{{reply.id}}" data-author="{{reply.authorName}}" bindtap="startReply">回复</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      </view>
+    </view>
+
+    <view class="comment-editor">
+      <view class="replying-tip" wx:if="{{replyingTo}}"><text>正在回复 {{replyingTo.authorName}}</text><view bindtap="cancelReply">取消</view></view>
+      <textarea class="comment-input" auto-height maxlength="200" focus="{{editorFocused}}" placeholder="{{replyingTo ? '回复 ' + replyingTo.authorName + '…' : '友善评论，和同学一起交流…'}}" value="{{commentText}}" bindinput="onCommentInput" bindblur="onEditorBlur" />
+      <view class="comment-bottom"><text>{{commentText.length}} / 200</text><button class="comment-button" loading="{{isCommenting}}" disabled="{{isCommenting}}" bindtap="submitComment">发表评论</button></view>
+    </view>
+  </block>
+</view>

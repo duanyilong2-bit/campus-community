@@ -1,0 +1,76 @@
+<view class="page-container">
+  <view class="page-title">我的发布</view>
+  <view class="page-description">跟进我发布的任务与确认进度</view>
+
+  <view class="list-search"><text>⌕</text><input placeholder="搜索我的发布" value="{{keyword}}" bindinput="onSearchInput" /></view>
+
+  <view class="local-badge"><text class="badge-dot"></text>{{dataSourceText}}</view>
+
+  <view class="empty-card" wx:if="{{tasks.length === 0}}">
+    <view class="empty-icon">发</view>
+    <view class="empty-title">还没有发布任务</view>
+    <view class="empty-description">从底部“发布”开始创建第一个需求。</view>
+    <button class="empty-action" bindtap="goPublish">发布任务</button>
+  </view>
+
+  <view
+    class="card published-card"
+    wx:for="{{tasks}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    data-source="{{item.dataSource}}"
+    bindtap="openTaskDetail"
+  >
+    <view class="task-header">
+      <text class="task-category">{{item.category}}</text>
+      <text class="task-status status-{{item.status}}">{{item.statusText}}</text>
+    </view>
+    <view class="task-title">{{item.title}}</view>
+    <view class="task-meta"><text class="meta-label">任务地点</text><text>{{item.location}}</text></view>
+    <view class="task-meta"><text class="meta-label">发布时间</text><text>{{item.createdAt}}</text></view>
+    <view class="task-reward-row"><text class="meta-label">任务报酬</text><view class="reward"><text>{{item.reward}}</text> 元</view></view>
+
+    <view class="proof-summary" wx:if="{{item.proofText || (item.proofImages && item.proofImages.length > 0)}}">
+      <view class="proof-summary-title">接单者完成凭证</view>
+      <view class="proof-summary-text" wx:if="{{item.proofText}}">{{item.proofText}}</view>
+      <view class="proof-images" wx:if="{{item.proofImages && item.proofImages.length > 0}}">
+        <image
+          class="proof-thumbnail"
+          wx:for="{{item.proofImages}}"
+          wx:for-item="image"
+          wx:key="*this"
+          src="{{image}}"
+          mode="aspectFill"
+          data-current="{{image}}"
+          data-urls="{{item.proofImages}}"
+          catchtap="previewProofImage"
+        />
+      </view>
+    </view>
+
+    <button
+      class="confirm-button"
+      wx:if="{{item.status === 'WAITING_CONFIRM'}}"
+      data-id="{{item.id}}"
+      data-source="{{item.dataSource}}"
+      loading="{{processingTaskId === item.id}}"
+      disabled="{{processingTaskId !== ''}}"
+      catchtap="confirmCompletion"
+    >
+      确认任务已完成
+    </button>
+    <button
+      class="cancel-button"
+      wx:if="{{item.status === 'WAITING' && item.dataSource === 'cloud'}}"
+      data-id="{{item.id}}"
+      loading="{{processingTaskId === item.id}}"
+      disabled="{{processingTaskId !== ''}}"
+      catchtap="cancelTask"
+    >
+      取消任务
+    </button>
+    <view class="dispute-link" wx:if="{{item.status !== 'WAITING' && item.status !== 'CANCELLED' && item.status !== 'EXPIRED'}}" data-id="{{item.id}}" catchtap="openDispute">遇到问题，申请处理 ›</view>
+  </view>
+  <view class="load-more" wx:if="{{hasMore}}" bindtap="onReachBottom">{{isLoadingMore ? '正在加载…' : '加载更多'}}</view>
+  <view class="list-end" wx:elif="{{tasks.length > 0 && !isLoading}}">共 {{total}} 条，已经到底了</view>
+</view>

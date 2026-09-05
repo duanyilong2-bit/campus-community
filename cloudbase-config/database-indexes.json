@@ -1,0 +1,43 @@
+{
+  "tasks": [
+    { "fields": { "createdAt": "desc" }, "unique": false },
+    { "fields": { "publisherId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "status": "asc", "createdAt": "desc" }, "unique": false }
+  ],
+  "orders": [
+    { "fields": { "workerId": "asc", "acceptedAt": "desc" }, "unique": false },
+    { "fields": { "publisherId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "taskId": "asc" }, "unique": true }
+  ],
+  "posts": [
+    { "fields": { "createdAt": "desc" }, "unique": false },
+    { "fields": { "authorId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "status": "asc", "createdAt": "desc" }, "unique": false }
+  ],
+  "comments": [
+    { "fields": { "postId": "asc", "createdAt": "asc" }, "unique": false },
+    { "fields": { "authorId": "asc", "createdAt": "desc" }, "unique": false }
+  ],
+  "notifications": [
+    { "fields": { "receiverId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "receiverId": "asc", "isRead": "asc" }, "unique": false }
+  ],
+  "reports": [
+    { "fields": { "status": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "reporterId": "asc", "createdAt": "desc" }, "unique": false }
+  ],
+  "verifications": [
+    { "fields": { "userId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "status": "asc", "createdAt": "desc" }, "unique": false }
+  ],
+  "feedback": [
+    { "fields": { "userId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "status": "asc", "createdAt": "desc" }, "unique": false }
+  ],
+  "disputes": [
+    { "fields": { "userId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "otherUserId": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "status": "asc", "createdAt": "desc" }, "unique": false },
+    { "fields": { "orderId": "asc", "userId": "asc", "status": "asc" }, "unique": false }
+  ]
+}

@@ -1,0 +1,25 @@
+<view class="page-container my-posts-page">
+  <view class="page-head">
+    <view><view class="page-title">我的帖子</view><view class="page-description">查看和管理我在文华校园圈发布的内容</view></view>
+    <view class="publish-button" bindtap="openPublish">＋ 发帖</view>
+  </view>
+
+  <view class="list-search"><text>⌕</text><input placeholder="搜索我的帖子" value="{{keyword}}" bindinput="onSearchInput" /></view>
+
+  <view class="empty-card" wx:if="{{!isLoading && posts.length === 0}}">
+    <view class="empty-icon">帖</view>
+    <view class="empty-title">还没有发布帖子</view>
+    <view class="empty-copy">去校园圈分享第一条内容吧</view>
+  </view>
+
+  <view class="post-card" wx:for="{{posts}}" wx:key="id" data-id="{{item.id}}" bindtap="openPost">
+    <view class="post-top"><text class="category">#{{item.category}}</text><text class="time">{{item.createdAt}}</text></view>
+    <view class="content">{{item.content}}</view>
+    <view class="images" wx:if="{{item.postImages.length > 0}}">
+      <image class="image" wx:for="{{item.postImages}}" wx:for-item="image" wx:key="*this" src="{{image}}" mode="aspectFill" data-current="{{image}}" data-urls="{{item.postImages}}" catchtap="previewImage" />
+    </view>
+    <view class="post-bottom"><text>♡ {{item.likeCount}}</text><text>评论 {{item.commentCount}}</text><view>查看与管理 ›</view></view>
+  </view>
+  <view class="load-more" wx:if="{{hasMore}}" bindtap="onReachBottom">{{isLoadingMore ? '正在加载…' : '加载更多'}}</view>
+  <view class="list-end" wx:elif="{{posts.length > 0 && !isLoading}}">共 {{total}} 条，已经到底了</view>
+</view>

@@ -1,0 +1,75 @@
+<view class="page-container">
+  <view class="page-title">我的订单</view>
+  <view class="page-description">管理我接取的任务与完成进度</view>
+
+  <view class="list-search"><text>⌕</text><input placeholder="搜索订单标题、地点或分类" value="{{keyword}}" bindinput="onSearchInput" /></view>
+
+  <view class="local-badge"><text class="badge-dot"></text>{{dataSourceText}}</view>
+
+  <view class="empty-card" wx:if="{{orders.length === 0}}">
+    <view class="empty-icon">单</view>
+    <view class="empty-title">还没有接取任务</view>
+    <view class="empty-description">去任务大厅看看，也许正好有人需要你。</view>
+    <button class="empty-action" bindtap="goTasks">前往任务大厅</button>
+  </view>
+
+  <view
+    class="card order-card"
+    wx:for="{{orders}}"
+    wx:key="id"
+    data-task-id="{{item.taskId}}"
+    data-source="{{item.dataSource}}"
+    bindtap="openTaskDetail"
+  >
+    <view class="order-header">
+      <text class="order-category">{{item.category}}</text>
+      <text class="order-status status-{{item.status}}">{{item.statusText}}</text>
+    </view>
+    <view class="order-title">{{item.title}}</view>
+    <view class="order-meta"><text class="meta-label">任务地点</text><text>{{item.location}}</text></view>
+    <view class="order-meta"><text class="meta-label">接单时间</text><text>{{item.acceptedAt}}</text></view>
+    <view class="order-reward-row">
+      <text class="meta-label">任务报酬</text>
+      <view class="reward"><text>{{item.reward}}</text> 元</view>
+    </view>
+
+    <view class="proof-summary" wx:if="{{item.proofText || (item.proofImages && item.proofImages.length > 0)}}">
+      <view class="proof-summary-title">我的完成说明</view>
+      <view class="proof-summary-text" wx:if="{{item.proofText}}">{{item.proofText}}</view>
+      <view class="proof-images" wx:if="{{item.proofImages && item.proofImages.length > 0}}">
+        <image
+          class="proof-thumbnail"
+          wx:for="{{item.proofImages}}"
+          wx:for-item="image"
+          wx:key="*this"
+          src="{{image}}"
+          mode="aspectFill"
+          data-current="{{image}}"
+          data-urls="{{item.proofImages}}"
+          catchtap="previewProofImage"
+        />
+      </view>
+    </view>
+
+    <button
+      class="complete-button"
+      wx:if="{{item.status === 'ACCEPTED'}}"
+      data-id="{{item.id}}"
+      data-source="{{item.dataSource}}"
+      loading="{{processingOrderId === item.id}}"
+      disabled="{{processingOrderId !== ''}}"
+      catchtap="submitTask"
+    >
+      我已完成，提交确认
+    </button>
+
+    <view class="waiting-confirm-tip" wx:elif="{{item.status === 'WAITING_CONFIRM'}}">
+      已提交，等待发布者确认
+    </view>
+
+    <view class="completed-tip" wx:else>已完成</view>
+    <view class="dispute-link" data-id="{{item.id}}" catchtap="openDispute">遇到问题，申请处理 ›</view>
+  </view>
+  <view class="load-more" wx:if="{{hasMore}}" bindtap="onReachBottom">{{isLoadingMore ? '正在加载…' : '加载更多'}}</view>
+  <view class="list-end" wx:elif="{{orders.length > 0 && !isLoading}}">共 {{total}} 条，已经到底了</view>
+</view>

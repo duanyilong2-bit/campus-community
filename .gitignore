@@ -1,0 +1,23 @@
+# WeChat Developer Tools local/private files
+project.private.config.json
+preview-qrcode.png
+preview-info.json
+upload-info.json
+
+# Local development checks and temporary artifacts
+.forumApi-remote-check/
+.forumApi-remote-check-2/
+*.log
+*.tmp
+*.bak
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Dependencies and generated files
+node_modules/
+cloudfunctions/**/node_modules/
+dist/
+build/

@@ -1,0 +1,67 @@
+{
+  "description": "校园跑腿和日常兼职任务微信小程序",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "folder",
+        "value": ".forumApi-remote-check"
+      },
+      {
+        "type": "folder",
+        "value": ".forumApi-remote-check-2"
+      },
+      {
+        "type": "folder",
+        "value": "cloudbase-config"
+      },
+      {
+        "type": "file",
+        "value": "homepage-community-preview.png"
+      },
+      {
+        "type": "file",
+        "value": "preview-qrcode.png"
+      },
+      {
+        "type": "file",
+        "value": "preview-info.json"
+      },
+      {
+        "type": "file",
+        "value": "upload-info.json"
+      }
+    ],
+    "include": []
+  },
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "compileType": "miniprogram",
+  "miniprogramRoot": "./",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "appid": "",
+  "projectname": "校园社区",
+  "condition": {},
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {},
+  "isGameTourist": false
+}

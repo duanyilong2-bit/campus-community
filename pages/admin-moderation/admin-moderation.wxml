@@ -1,0 +1,11 @@
+<view class="page">
+  <view class="header"><view class="title">举报处理</view><view class="copy">仅管理员可查看和操作</view></view>
+  <view class="empty" wx:if="{{!isLoading && reports.length === 0}}">暂无举报记录</view>
+  <view class="card" wx:for="{{reports}}" wx:key="id">
+    <view class="row"><text class="reason">{{item.reason}}</text><text class="status status-{{item.status}}">{{item.status === 'PENDING' ? '待处理' : '已处理'}}</text></view>
+    <view class="content">{{item.postContent}}</view>
+    <view class="meta">举报时间：{{item.createdAt}}</view>
+    <view class="meta" wx:if="{{item.decision}}">处理结果：{{item.decision === 'REMOVE' ? '已删除帖子' : '已驳回举报'}}</view>
+    <button wx:if="{{item.status === 'PENDING'}}" class="handle" data-id="{{item.id}}" loading="{{processingId === item.id}}" disabled="{{processingId !== ''}}" bindtap="chooseDecision">审核处理</button>
+  </view>
+</view>

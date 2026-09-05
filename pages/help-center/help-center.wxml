@@ -1,0 +1,20 @@
+<view class="help-page">
+  <view class="hero"><view class="hero-title">校园社区怎么使用？</view><view class="hero-copy">点击下面的功能可以直接前往对应页面</view></view>
+
+  <view class="section-title">任务互助</view>
+  <view class="feature-grid">
+    <view class="feature" bindtap="openPublish"><view class="icon blue">发</view><view><view class="name">发布任务</view><view class="copy">填写需求与测试报酬</view></view><text>›</text></view>
+    <view class="feature" bindtap="openTasks"><view class="icon green">接</view><view><view class="name">寻找任务</view><view class="copy">浏览并接取待接单任务</view></view><text>›</text></view>
+    <view class="feature" bindtap="openOrders"><view class="icon purple">单</view><view><view class="name">我的订单</view><view class="copy">提交文字和图片完成凭证</view></view><text>›</text></view>
+    <view class="feature" bindtap="openPublished"><view class="icon orange">确</view><view><view class="name">我的发布</view><view class="copy">取消任务或确认完成</view></view><text>›</text></view>
+  </view>
+
+  <view class="section-title">校园互动</view>
+  <view class="feature-grid">
+    <view class="feature" bindtap="openForum"><view class="icon cyan">圈</view><view><view class="name">文华校园圈</view><view class="copy">发帖、点赞和评论互动</view></view><text>›</text></view>
+    <view class="feature" bindtap="openLegal"><view class="icon gray">规</view><view><view class="name">协议与社区规范</view><view class="copy">查看隐私和安全说明</view></view><text>›</text></view>
+  </view>
+
+  <view class="flow-card"><view class="flow-title">完整任务流程</view><view class="flow">发布任务 → 同学接单 → 接单者提交完成凭证 → 发布者确认完成</view><view class="tip">当前版本不涉及真实支付，请勿私下进行不安全交易。</view></view>
+  <button class="contact" open-type="contact">仍有问题，联系客服</button>
+</view>

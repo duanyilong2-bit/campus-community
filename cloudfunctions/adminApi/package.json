@@ -1,0 +1,9 @@
+{
+  "name": "admin-api",
+  "version": "1.0.0",
+  "description": "校园社区举报审核管理接口",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}

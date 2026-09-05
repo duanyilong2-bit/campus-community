@@ -1,0 +1,9 @@
+{
+  "name": "confirm-task",
+  "version": "1.0.0",
+  "description": "发布者安全确认云端任务完成",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}

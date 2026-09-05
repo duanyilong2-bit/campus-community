@@ -1,0 +1,23 @@
+{
+  "auditResult": "小程序前端没有直接调用 wx.cloud.database，业务数据全部经云函数访问",
+  "recommendedMode": "仅管理端可读写",
+  "collections": [
+    "users",
+    "tasks",
+    "orders",
+    "posts",
+    "comments",
+    "notifications",
+    "reports",
+    "forum_views",
+    "image_security_checks",
+    "verifications",
+    "feedback",
+    "disputes"
+  ],
+  "rule": {
+    "read": false,
+    "write": false
+  },
+  "storageRecommendation": "云存储使用仅创建者可读写；云函数不受客户端安全规则限制"
+}

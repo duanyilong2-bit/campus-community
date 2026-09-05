@@ -1,0 +1,21 @@
+.my-posts-page { padding-top: 32rpx; padding-bottom: 70rpx; }
+.page-head { display: flex; align-items: flex-start; justify-content: space-between; }
+.publish-button { flex-shrink: 0; padding: 13rpx 18rpx; background: #eaf4ff; color: #2785e4; font-size: 22rpx; border-radius: 999rpx; }
+.empty-card { padding: 95rpx 20rpx; background: #ffffff; text-align: center; border-radius: 26rpx; }
+.empty-icon { display: flex; align-items: center; justify-content: center; width: 86rpx; height: 86rpx; margin: auto; background: #eaf4ff; color: #2d88e5; font-weight: 900; border-radius: 26rpx; }
+.empty-title { margin-top: 20rpx; color: #303b4d; font-size: 28rpx; font-weight: 850; }
+.empty-copy { margin-top: 8rpx; color: #98a2b1; font-size: 22rpx; }
+.post-card { margin-bottom: 21rpx; padding: 26rpx; background: #ffffff; border: 1rpx solid #edf1f6; border-radius: 26rpx; box-shadow: 0 9rpx 25rpx rgba(30, 57, 98, .05); }
+.post-top, .post-bottom { display: flex; align-items: center; }
+.category { padding: 7rpx 13rpx; background: #eff6ff; color: #3287db; font-size: 20rpx; border-radius: 999rpx; }
+.time { margin-left: auto; color: #9aa3b1; font-size: 19rpx; }
+.content { display: -webkit-box; overflow: hidden; margin-top: 19rpx; color: #2c3749; font-size: 27rpx; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.images { display: flex; overflow: hidden; margin-top: 17rpx; gap: 7rpx; border-radius: 16rpx; }
+.image { flex: 1; width: 0; height: 160rpx; background: #eef2f6; }
+.post-bottom { margin-top: 19rpx; padding-top: 17rpx; color: #8b95a5; font-size: 21rpx; border-top: 1rpx solid #f0f2f6; }
+.post-bottom text { margin-right: 25rpx; }
+.post-bottom view { margin-left: auto; color: #3187dc; }
+.list-search { display: flex; align-items: center; height: 78rpx; margin: 22rpx 0; padding: 0 22rpx; background: #fff; color: #8e99aa; border-radius: 22rpx; }
+.list-search input { flex: 1; margin-left: 12rpx; font-size: 24rpx; }
+.load-more, .list-end { padding: 26rpx 0 40rpx; color: #8e99aa; font-size: 23rpx; text-align: center; }
+.load-more { color: #2789e9; font-weight: 700; }

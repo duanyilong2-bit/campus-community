@@ -1,0 +1,9 @@
+{
+  "name": "submit-task",
+  "version": "1.0.0",
+  "description": "接单者安全提交云端任务完成",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "3.0.1"
+  }
+}
