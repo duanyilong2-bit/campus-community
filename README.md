@@ -16,23 +16,23 @@
 
 ### 发布任务
 
-![发布任务](docs/screenshots/task-publish.jpg)
+![发布任务](task-publish.jpg)
 
 ### 任务大厅
 
-![任务大厅](docs/screenshots/task-list.jpg)
+![任务大厅](task-list.jpg)
 
 ### 个人中心
 
-![个人中心](docs/screenshots/profile.jpg)
+![个人中心](profile.jpg)
 
 ### 校园圈
 
-![校园圈](docs/screenshots/forum.jpg)
+![校园圈](forum.jpg)
 
 ### 首页
 
-![首页](docs/screenshots/home.jpg)
+![首页](home.jpg)
 
 ## 开始使用
 
