@@ -12,6 +12,27 @@
 - 安全能力：未认证提示、内容安全检查、图片安全检查、举报与争议反馈
 - CloudBase：云函数、数据库权限建议、索引配置和微信订阅消息
 - 隐私选项：任务支持匿名发布
+- ## 小程序截图
+
+### 发布任务
+
+![发布任务](docs/screenshots/task-publish.jpg)
+
+### 任务大厅
+
+![任务大厅](docs/screenshots/task-list.jpg)
+
+### 个人中心
+
+![个人中心](docs/screenshots/profile.jpg)
+
+### 校园圈
+
+![校园圈](docs/screenshots/forum.jpg)
+
+### 首页
+
+![首页](docs/screenshots/home.jpg)
 
 ## 开始使用
 
